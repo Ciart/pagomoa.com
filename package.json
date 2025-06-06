@@ -1,0 +1,7 @@
+{
+  "name": "pagomoa",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
