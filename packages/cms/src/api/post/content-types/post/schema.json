@@ -18,12 +18,18 @@
       "type": "text"
     },
     "content": {
-      "type": "blocks"
+      "type": "richtext"
     },
     "author": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
+      "inversedBy": "posts"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
       "inversedBy": "posts"
     },
     "slug": {
