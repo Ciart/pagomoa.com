@@ -30,7 +30,7 @@
       }
 
       // 카테고리별 게시글 가져오기
-      const postsResponse = await fetch(`${PUBLIC_STRAPI_API_URL}/posts?filters[category][slug][$eq]=${slug}&populate=category,author`);
+      const postsResponse = await fetch(`${PUBLIC_STRAPI_API_URL}/posts?filters[category][slug][$eq]=${slug}&populate[0]=category&populate[1]=author`);
       if (!postsResponse.ok) {
         throw new Error(`HTTP error! status: ${postsResponse.status}`);
       }
