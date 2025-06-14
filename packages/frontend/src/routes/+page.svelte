@@ -22,7 +22,7 @@
 
 	<div class="flex flex-col items-center">
 		<a
-			href={PUBLIC_STRAPI_API_URL.replace('/api', '/') + 'Pagomoa_Windows_0_1_1_alpha_0_46609bdb49.zip'}
+			href={PUBLIC_STRAPI_API_URL.replace('strapiapp.com', 'media.strapiapp.com').replace('/api', '/') + 'Pagomoa_Windows_0_1_1_alpha_0_46609bdb49.zip'}
 			class="transform rounded-full bg-blue-600 px-8 py-4 text-xl font-bold text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-blue-700"
 			download
 		>
