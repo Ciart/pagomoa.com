@@ -1,3 +1,7 @@
+<script lang="ts">
+	import { PUBLIC_STRAPI_API_URL } from '$env/static/public';
+</script>
+
 <div class="flex min-h-screen flex-col items-center justify-center bg-gray-900 p-4 text-white">
 	<div class="mb-8 flex flex-col items-center">
 		<img
@@ -18,16 +22,17 @@
 
 	<div class="flex flex-col items-center">
 		<a
-			href="/downloads/pagomoa-game.zip"
+			href={PUBLIC_STRAPI_API_URL.replace('/api', '/') + 'Pagomoa_Windows_0_1_1_alpha_0_46609bdb49.zip'}
 			class="transform rounded-full bg-blue-600 px-8 py-4 text-xl font-bold text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-blue-700"
 			download
 		>
 			Windows 다운로드
 		</a>
 		<p class="mt-4 text-sm text-gray-400">
-			버전: v0.1.0-alpha <a href="/downloads" class="ml-2 text-blue-300 hover:underline"
+			v0.1.1-alpha.0
+			<!-- <a href="/downloads" class="ml-2 text-blue-300 hover:underline"
 				>모든 버전 보기</a
-			>
+			> -->
 		</p>
 	</div>
 </div>
