@@ -2,17 +2,16 @@
   import '../../app.css';
   import type { Category, Post } from '$lib/types/blog';
   import { stripMarkdown } from '$lib/utils/markdown';
+	import { PUBLIC_STRAPI_API_URL } from '$env/static/public';
 
   let categories: Category[] = [];
   let posts: Post[] = [];
   let errorMessage: string = '';
 
-  const STRAPI_API_URL = 'http://localhost:1337/api';
-
   async function fetchData() {
     try {
       // 카테고리 목록 가져오기
-      const categoriesResponse = await fetch(`${STRAPI_API_URL}/categories`);
+      const categoriesResponse = await fetch(`${PUBLIC_STRAPI_API_URL}/categories`);
       if (!categoriesResponse.ok) {
         throw new Error(`HTTP error! status: ${categoriesResponse.status}`);
       }
@@ -20,7 +19,7 @@
       categories = categoriesData.data;
 
       // 게시글 목록 가져오기
-      const postsResponse = await fetch(`${STRAPI_API_URL}/posts?populate=category`);
+      const postsResponse = await fetch(`${PUBLIC_STRAPI_API_URL}/posts?populate=category`);
       if (!postsResponse.ok) {
         throw new Error(`HTTP error! status: ${postsResponse.status}`);
       }

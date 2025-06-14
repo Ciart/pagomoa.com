@@ -1,13 +1,12 @@
 <script lang="ts">
   import { page } from '$app/stores';
+	import { PUBLIC_STRAPI_API_URL } from '$env/static/public';
   import type { Category, Author, Post } from '$lib/types/blog';
   import { stripMarkdown } from '$lib/utils/markdown';
 
   let category: Category | null = null;
   let posts: Post[] = [];
   let errorMessage: string = '';
-
-  const STRAPI_API_URL = 'http://localhost:1337/api';
 
   async function fetchCategoryAndPosts() {
     const slug = $page.params.slug;
@@ -18,7 +17,7 @@
 
     try {
       // 카테고리 정보 가져오기
-      const categoryResponse = await fetch(`${STRAPI_API_URL}/categories?filters[slug][$eq]=${slug}`);
+      const categoryResponse = await fetch(`${PUBLIC_STRAPI_API_URL}/categories?filters[slug][$eq]=${slug}`);
       if (!categoryResponse.ok) {
         throw new Error(`HTTP error! status: ${categoryResponse.status}`);
       }
@@ -31,7 +30,7 @@
       }
 
       // 카테고리별 게시글 가져오기
-      const postsResponse = await fetch(`${STRAPI_API_URL}/posts?filters[category][slug][$eq]=${slug}&populate=category,author`);
+      const postsResponse = await fetch(`${PUBLIC_STRAPI_API_URL}/posts?filters[category][slug][$eq]=${slug}&populate=category,author`);
       if (!postsResponse.ok) {
         throw new Error(`HTTP error! status: ${postsResponse.status}`);
       }

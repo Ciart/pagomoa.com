@@ -3,11 +3,10 @@
   import { page } from '$app/stores';
   import { marked } from 'marked';
   import type { Category, Post } from '$lib/types/blog';
+	import { PUBLIC_STRAPI_API_URL } from '$env/static/public';
 
   let post: Post | null = null;
   let errorMessage: string = '';
-
-  const STRAPI_API_URL = 'http://localhost:1337/api';
 
   async function fetchPost() {
     const slug = $page.params.slug;
@@ -17,7 +16,7 @@
     }
 
     try {
-      const response = await fetch(`${STRAPI_API_URL}/posts?filters[slug][$eq]=${slug}&populate=category`);
+      const response = await fetch(`${PUBLIC_STRAPI_API_URL}/posts?filters[slug][$eq]=${slug}&populate=category`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
